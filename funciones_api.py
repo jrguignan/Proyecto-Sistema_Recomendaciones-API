@@ -52,8 +52,8 @@ def presentacion():
             <p>Bienvenido a la API de Steam donde se pueden hacer diferentes consultas sobre la plataforma de videojuegos.</p>
             <p>INSTRUCCIONES:</p>
             <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
-            <p> Visita mi perfil en <a href="https://www.linkedin.com/in/ingambcarlapezzone/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin"></a></p>
-            <p> El desarrollo de este proyecto esta en <a href="https://github.com/IngCarlaPezzone/PI1_MLOps_videojuegos"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"></a></p>
+            <p> Visita mi perfil en <a href="www.linkedin.com/in/jrguignan"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin"></a></p>
+            <p> El desarrollo de este proyecto esta en <a href="https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"></a></p>
         </body>
     </html>
     '''
@@ -218,7 +218,7 @@ def best_developer_year(year: int):
     return top_tres
 
 #############################################################################################################
-#Funcion Analisis de Sentimietno
+#Funcion Analisis de Sentimiento
 
 def developer_reviews_analysis(desarrollador : str):
     # Filtrar el DataFrame por el año proporcionado
