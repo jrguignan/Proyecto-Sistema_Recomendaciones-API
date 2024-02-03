@@ -15,7 +15,6 @@ df = pd.read_csv(r'dataframe\df.csv')
 tfidf = TfidfVectorizer (stop_words="english")
 tfidf_matrix = tfidf.fit_transform(df1['genres'])
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
-indices = pd.Series (df1.index, index=df1['id']).drop_duplicates()
 
 #################################################################################################
 #Funcion Presentacion
@@ -61,7 +60,7 @@ def presentacion():
 ###########################################################################################################
 #Funcion 1
 
-def developer( desarrollador : str ):
+def developer(desarrollador : str):
 
       #daraframe filtrando el desarrollador, agrupado por ano y contando los juegos por ano
       df_total = df1[df1['developer']==desarrollador].groupby(['Añio'])['id'].count()
@@ -92,45 +91,47 @@ def developer( desarrollador : str ):
 
       #Agrega porcentaje % a la columna contenido free
       df_nuevo['Contenido Free'] = df_nuevo['Contenido Free'].map(lambda x: f'{x}%')
-
-      #Quita los indices naturales de los dataframe que aparecen a la izquierda
-      #Pense se mostraba un datafame
-      #print(df_nuevo.to_string(index=False))
-
+ 
       #Pregunte como se deberia mostrar la informacion y me dijeron que lo hiciera en un diccionario
-      lista = []
-      for i in range(0, len(df_nuevo)):
-            dic={'Añio':df_nuevo.iloc[i][0] ,
-                 'Cantidad de Items': df_nuevo.iloc[i][1] , 
-                 'Contenido Free': df_nuevo.iloc[i][2] }
-            
-            lista.append(dic)
+      dic = df_nuevo.to_dict('list')
+      dic_return = {} 
 
-      return lista
+      for i in range(0, len(df_nuevo)):
+          dic1 = {'Año': dic['Añio'][i], 
+                  'Cantidad de Items': dic['Cantidad de Items'][i], 
+                  'Contenido Free': dic['Contenido Free'][i]}
+          dic_return[i] = dic1
+
+      return dic_return
+
 
 #############################################################################################################
 #Funcion 2
 
-def userdata( User_id : str ):
+def userdata(User_id : str):
 
     #Filtra los datos del user_id
     df_nuevo = df[df['user_id']== User_id]
 
     #Dinero gastado por el usuario
-    Gasto = df_nuevo['price'].sum()
+    gasto = str(round(df_nuevo['price'].sum(),2))+' USD'
 
     #Cantidad de items comprados
     n_items = df_nuevo['item_name'].count()
 
-    #Cantida de Juegos recomendados
+    #Cantidad de Juegos recomendados
     n_reco = df_nuevo['recommend'].sum()
 
-    #Muestra los resultados en un diccionario y con el formato adecuado
-    dic = {"Usuario X" : User_id, "Dinero gastado": '{:,.2f} USD'.format(Gasto), 
-         "% de recomendación": '{:,.1f} %'.format(n_reco*100/n_items),
-         "cantidad de items": n_items}
+    #Porcentaje de
+    por_reco = str(n_reco*100/n_items) + '%'
 
-    return print(dic)
+    #Muestra los resultados en un diccionario y con el formato adecuado
+
+    return {"Usuario X" : str(User_id), 
+           "Dinero gastado": str(gasto), 
+           "% de recomendación": str(por_reco),
+           "cantidad de items": int(n_items)  
+           }
 
 ############################################################################################################
 #Funcion 3
@@ -243,22 +244,43 @@ def developer_reviews_analysis(desarrollador : str):
 #########################################################################################################
 #Funcion Sistema de Recomendacion
 
-def developer_reviews_analysis(desarrollador : str):
-    # Filtrar el DataFrame por el año proporcionado
-    df_filtered = df[df['developer'] == desarrollador]
-    
-    # Contar la cantidad de registros por cada análisis de sentimiento
-    resultados = df_filtered['sentiment_analysis'].value_counts()
-    
-    # Si algún análisis de sentimiento está ausente, añádelo con 0
-    for sentimiento in ['Negative', 'Positive']:
-        if sentimiento not in resultados:
-            resultados[sentimiento] = 0
-    
-    # Almacenar los resultados en una lista de tuplas
-    resultados_lista = [(sentimiento, cantidad) for sentimiento, cantidad in resultados.items()]
-    lista = ['Negative = '+str(resultados.iloc[1]),  'Positive = '+str(resultados.iloc[0]) ]
+def recomendacion_juego (juego_id : int):
+
+    indices = pd.Series (df1.index, index=df1['id']).drop_duplicates()
+
+    idx = indices[juego_id]
+
+# Obtenga las puntuaciones de similitud por pares de todas las películas con esa película
+    sim_scores = list(enumerate (cosine_sim[idx]))
+
+# Ordene las películas según las puntuaciones de similitud 
+    sim_scores = sorted (sim_scores, key=lambda x: x[1], reverse=True)
+
+# Obtén las puntuaciones de las 10 películas más similares 
+    sim_scores = sim_scores [1:11]
+
+# Obtenga Los índices de películas
+
+    movie_indices = [i[0] for i in sim_scores]
+
+# Devuelve el top 10 de películas más similares 
+    lista = list(df1['id'].iloc[movie_indices])
+    lista = lista[0:10]
     
 
-    #print(*lista, sep=",")
-    return {desarrollador : lista}
+    #Para sacar juegos sin repeticion en los recomendados
+    a=None
+    lista_juegos=[]
+    for i,l in enumerate(lista):
+        if not(l in lista_juegos) and (l != juego_id):
+           lista_juegos.append(lista[i])
+    #del lista_juegos[2]
+    
+    return {
+          'Juegos recomendados a partir del juego juego_id' : str(juego_id), 
+          'No 1': str(df1[df1['id']==lista_juegos[0]].iloc[0][1]),
+          'No 2': str(df1[df1['id']==lista_juegos[1]].iloc[0][1]),
+          'No 3': str(df1[df1['id']==lista_juegos[2]].iloc[0][1]),
+          'No 4': str(df1[df1['id']==lista_juegos[3]].iloc[0][1]),
+          'No 5': str(df1[df1['id']==lista_juegos[4]].iloc[0][1])
+          }
