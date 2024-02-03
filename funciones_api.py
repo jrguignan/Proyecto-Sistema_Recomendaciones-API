@@ -12,9 +12,9 @@ df1 = pd.read_csv(r'dataframe\df1.csv')
 df = pd.read_csv(r'dataframe\df.csv')
 
 #Matriz de similaridad del los cosenos
-tfidf = TfidfVectorizer (stop_words="english")
-tfidf_matrix = tfidf.fit_transform(df1['genres'])
-cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+# tfidf = TfidfVectorizer (stop_words="english")
+# tfidf_matrix = tfidf.fit_transform(df1['genres'])
+# cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 #################################################################################################
 #Funcion Presentacion
@@ -244,43 +244,43 @@ def developer_reviews_analysis(desarrollador : str):
 #########################################################################################################
 #Funcion Sistema de Recomendacion
 
-def recomendacion_juego (juego_id : int):
+# def recomendacion_juego (juego_id : int):
 
-    indices = pd.Series (df1.index, index=df1['id']).drop_duplicates()
+#     indices = pd.Series (df1.index, index=df1['id']).drop_duplicates()
 
-    idx = indices[juego_id]
+#     idx = indices[juego_id]
 
-# Obtenga las puntuaciones de similitud por pares de todas las películas con esa película
-    sim_scores = list(enumerate (cosine_sim[idx]))
+# # Obtenga las puntuaciones de similitud por pares de todas las películas con esa película
+#     sim_scores = list(enumerate (cosine_sim[idx]))
 
-# Ordene las películas según las puntuaciones de similitud 
-    sim_scores = sorted (sim_scores, key=lambda x: x[1], reverse=True)
+# # Ordene las películas según las puntuaciones de similitud 
+#     sim_scores = sorted (sim_scores, key=lambda x: x[1], reverse=True)
 
-# Obtén las puntuaciones de las 10 películas más similares 
-    sim_scores = sim_scores [1:11]
+# # Obtén las puntuaciones de las 10 películas más similares 
+#     sim_scores = sim_scores [1:11]
 
-# Obtenga Los índices de películas
+# # Obtenga Los índices de películas
 
-    movie_indices = [i[0] for i in sim_scores]
+#     movie_indices = [i[0] for i in sim_scores]
 
-# Devuelve el top 10 de películas más similares 
-    lista = list(df1['id'].iloc[movie_indices])
-    lista = lista[0:10]
+# # Devuelve el top 10 de películas más similares 
+#     lista = list(df1['id'].iloc[movie_indices])
+#     lista = lista[0:10]
     
 
-    #Para sacar juegos sin repeticion en los recomendados
-    a=None
-    lista_juegos=[]
-    for i,l in enumerate(lista):
-        if not(l in lista_juegos) and (l != juego_id):
-           lista_juegos.append(lista[i])
-    #del lista_juegos[2]
+#     #Para sacar juegos sin repeticion en los recomendados
+#     a=None
+#     lista_juegos=[]
+#     for i,l in enumerate(lista):
+#         if not(l in lista_juegos) and (l != juego_id):
+#            lista_juegos.append(lista[i])
+#     #del lista_juegos[2]
     
-    return {
-          'Juegos recomendados a partir del juego juego_id' : str(juego_id), 
-          'No 1': str(df1[df1['id']==lista_juegos[0]].iloc[0][1]),
-          'No 2': str(df1[df1['id']==lista_juegos[1]].iloc[0][1]),
-          'No 3': str(df1[df1['id']==lista_juegos[2]].iloc[0][1]),
-          'No 4': str(df1[df1['id']==lista_juegos[3]].iloc[0][1]),
-          'No 5': str(df1[df1['id']==lista_juegos[4]].iloc[0][1])
-          }
+#     return {
+#           'Juegos recomendados a partir del juego juego_id' : str(juego_id), 
+#           'No 1': str(df1[df1['id']==lista_juegos[0]].iloc[0][1]),
+#           'No 2': str(df1[df1['id']==lista_juegos[1]].iloc[0][1]),
+#           'No 3': str(df1[df1['id']==lista_juegos[2]].iloc[0][1]),
+#           'No 4': str(df1[df1['id']==lista_juegos[3]].iloc[0][1]),
+#           'No 5': str(df1[df1['id']==lista_juegos[4]].iloc[0][1])
+#           }
