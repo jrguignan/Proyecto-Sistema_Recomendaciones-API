@@ -7,8 +7,10 @@ from sklearn.metrics.pairwise import linear_kernel
 
 #################################################################################################
 #carga de dataframe
-df1 = pd.read_csv(r'dataframe\df1.csv')
-df = pd.read_csv(r'dataframe\df.csv')
+#df1 = pd.read_csv(r'dataframe\df1.csv')
+#df = pd.read_csv(r'dataframe\df.csv')
+df1 = pd.read_csv(r'df1.csv')
+df = pd.read_csv(r'df.csv')
 
 #Matriz de similaridad del los cosenos
 # tfidf = TfidfVectorizer (stop_words="english")
