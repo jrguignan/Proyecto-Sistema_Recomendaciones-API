@@ -85,30 +85,35 @@ Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando l
     Debe devolver la cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
   
 Ejemplo de retorno: {"Año: 2023 ,Cantidad de Items: 50 , Contenido Free: 27%}
-                    {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}<br/>
+                    {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}
+<br/>
 
 
 + def **userdata( *User_id : str* )**:
     Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento
 
 Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, <br>
-"Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}<br/>
+"Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+<br/>
 
 + def **UserForGenre( *genero : str* )**:
     Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
   
 Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf,<br>
-"Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}<br/>
+"Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+<br/>
 
 + def **best_developer_year( *año : int* )**:
    Debe devolver el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
   
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]<br/>
+Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+<br/>
 
 + def **developer_reviews_analysis( *desarrolladora : str* )**:
     Según el desarrollador, se devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
-Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}<br>
+Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}
+<br/>
 
 + def **recomendacion_juego( *id de producto* )**: 
     Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
@@ -143,7 +148,7 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render qu
 - Se creó el archivo **main.py**
 - Se levantó el servidor **uvicorn main:app --reload**
 
-Recomendaciones: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la funcion. y Si la salidad dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
+**Recomendaciones**: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la funcion. y Si la salidad dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
 
 #### Render
 
@@ -159,7 +164,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 - Se generó un servicio nuevo  en `[render.com](https://render.com/), conectado al presente repositorio.
 - Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
 
-Recomendaciones: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida,las siguientes veces no nuestra el mismo error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
+_Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida,las siguientes veces no nuestra el mismo error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
 
 ## Video
 
