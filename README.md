@@ -6,7 +6,8 @@
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
 
 
-![henry](https://camo.githubusercontent.com/3cb94d41ac073b2d10b8c7423e5a54e2928610821a2837883e4a9a56052f37ab/68747470733a2f2f643331757a386c77666d796e38672e636c6f756466726f6e742e6e65742f4173736574732f6c6f676f2d68656e72792d77686974652d6c672e706e67)
+![henry](https://github.com/GRP-777/Proyecto_Individual_1/assets/132501854/1333fbec-6c93-4f2d-a1ff-6b1ad899051c)
+
 # Proyecto Individual  1 
 ## Data Science & Machine Learning Operations (MLOps) 
 
@@ -81,32 +82,41 @@ Los conjuntos de datos tenían algunos aspectos que corregir relacionados con va
 ### API
 Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
 
-+ def **PlayTimeGenre( *`genero` : str* )**:
-    Debe devolver `año` con mas horas jugadas para dicho género.
++ def **developer( *desarrollador : str* )**:
+    Debe devolver la cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
   
-Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
+Ejemplo de retorno: {"Año: 2023 ,Cantidad de Items: 50 , Contenido Free: 27%}
+                    {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}
 
-+ def **UserForGenre( *`genero` : str* )**:
-    Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
 
-Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf,
-			     "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
++ def **userdata( *User_id : str* )**:
+    Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento
 
-+ def **UsersRecommend( *`año` : int* )**:
-   Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
+Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+
++ def **UserForGenre( *genero : str* )**:
+    Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
+  
+Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+
++ def **best_developer_year( *año : int* )**:
+   Debe devolver el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
   
 Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
 
-+ def **UsersWorstDeveloper( *`año` : int* )**:
-   Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado. (reviews.recommend = False y comentarios negativos)
-  
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
++ def **developer_reviews_analysis( *desarrolladora : str* )**:
+    Según el desarrollador, se devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
-+ def **sentiment_analysis( *`empresa desarrolladora` : str* )**:
-    Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total 
-    de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor. 
+Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}
 
-Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
++ def **recomendacion_juego( *id de producto* )**: 
+    Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
+    Ejemplo de retorno: {'Juegos recomendados a partir del juego juego_id': '6787990',
+                         'No 1': 'Snooker-online multiplayer snooker game!',
+                         'No 2': "Malzbie's Pinball Collection",
+                         'No 3': 'Zaccaria Pinball - Blackbelt Table',
+                         'No 4': 'Zaccaria Pinball - Bronze Membership',
+                         'No 5': 'Zaccaria Pinball - Cine Star Table'}
 
 <br/>
 
@@ -114,7 +124,7 @@ Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
 
 El modelo establece una relación item-item. Esto significa que dado un item_id, en función de qué tan similar sea al resto, se recomendarán artículos similares. Aquí, la entrada es un juego y la salida es una lista de juegos recomendados.
 
- El método de aprendizaje automático utilizado es K-Neighbours. No es el mejor método para abordar los conjuntos de datos y parte de este proyecto se centra en eso. Debido a que el proyecto debe implementarse en Render, la memoria RAM disponible es limitada y lo importante aquí era comprender la diferencia entre los diferentes modelos de Machine Learning. Anteriormente, probé árboles de decisión y procesamiento de lenguaje natural usando similitud de coseno.
+Se utilizó una técnica de procesamiento de lenguaje natural (NLP) llamada TF-IDF (Term Frequency-Inverse Document Frequency) y el cálculo de similitud del coseno para analizar la similitud entre textos, en este caso, para analizar la similitud entre los géneros de los juegos del datafame df1_redu. Se tuvo que reducir la cantidad de filas del dataframe original df1
 
 
 
@@ -124,7 +134,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 
 - Se generó un API de manera local con FastAPI.
 - Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio.
-- Finalmente, el servicio queda corriendo en [proyecto-api_steam](https://proyecto-api-steam.onrender.com/)
+- Finalmente, el servicio queda corriendo en [API_Steam](https://proyecto-api-steam.onrender.com/)
 
 
 #### Requerimientos
@@ -139,5 +149,5 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 #### Autor
 - José R. Guignan
 - Mail: joserguignan@gmail.com
-- Linkedin:[linkedin](www.linkedin.com/in/jrguignan)
+- Linkedin: [Linkedin](https://www.linkedin.com/in/jrguignan)
 
