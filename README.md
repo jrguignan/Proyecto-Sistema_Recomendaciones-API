@@ -8,7 +8,7 @@
 
 ![henry](https://github.com/GRP-777/Proyecto_Individual_1/assets/132501854/1333fbec-6c93-4f2d-a1ff-6b1ad899051c)
 
-# Proyecto Individual Sistema de Recomendación Steam - API
+# Proyecto Sistema de Recomendación Steam - API
 ## Data Science & Machine Learning Operations (MLOps) 
 
 <p align="center">
@@ -65,18 +65,21 @@ Para descargar el dataset original, se puede descargar del siguiente link. [Data
 
 ### [ETL](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/ETL.ipynb)
 
-* Se abrieron y leyeron los archivos de formato JSON en líneas separadas.
-* Se analizaron y almacenaron en una lista.
-* Se tomó la lista de objetos JSON, se concatenaron en un único DataFrame.
-* Se desanidaron columnas anidadas.
+
+* Se abrieron y leyeron los archivos de formato JSON **anidados**.
+* Se guardaron en dataframes, **df_games**, **df_items** y **df_reviews**.
+* Se hizo una limpieza general de los datos.
+* Se creo un datafreme con todos los datos **df**.
+* Se transformó la columna **price** a float y los valores de juegos gratis, pasaron a ser 0
+* Se creó la columna **release_year** y **posted_year** a partir de **release_date** y **posted_year**.
+* Se creó un segundo datadrame **df1**, para facilitar el código de las funciones.
 * Se eliminaron nulos y columnas innecesarias para el análisis.
-* Se corrigió formato de fechas.
-* 
-* En el archivo Reviews.json, se utilizó la biblioteca NLTK (***Natural Language Toolkit***) y la función **developer_reviews_analysis** para aplicar análisis de sentimiento y clasificar la columna 'Reviews', que contiene reseñas realizadas por los usuarios de los juegos, en positivas y negativas.
+* Se guardó **df** y **df1** dentro de la carpeta [dataframe.](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/dataframe)
+
 
 ### [EDA](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/EDA.ipynb)
 
-Los conjuntos de datos tenían algunos aspectos que corregir relacionados con variables numéricas.La columna playtime_forever tuvo algunos valores atípicos con cantidades irreales de horas jugadas para algunos usuarios, las cantidades fueron corregidas
+Se aplicó la regla de los 3 sigmas sobre las columna **Playtime_forever** y **Price**. Tambien se revisaron las distintas columnas que se utilizaron en las funciones. No se realizó mayor cambio sobre los dataframes, ya que no se consideró necesario. Los análisis se realizaron en algunos casos sobre el dataframe df y otros sobre el df1, para mayor comodidad.
 
 ### [Funciones](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/funciones.ipynb)
 Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
@@ -84,10 +87,9 @@ Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando l
 + def **developer( *desarrollador : str* )**:
     Debe devolver la cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
   
-Ejemplo de retorno: {"Año: 2023 ,Cantidad de Items: 50 , Contenido Free: 27%}
+Ejemplo de retorno: {"Año: 2023 ,Cantidad de Items: 50 , Contenido Free: 27%}<br>
                     {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}
 <br/>
-
 
 + def **userdata( *User_id : str* )**:
     Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento
@@ -140,7 +142,7 @@ Del siguiente link se puede descargar la matriz [cosine_sim](https://drive.googl
 
 #### FastAPI
 
-Para el deploy de la API de manera local, se seleccionó la plataforma Render que es una nube unificada para crear y ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
+Para el deploy de la API de manera local, se seleccionó la plataforma Render. Para esto se siguieron estos pasos:
 
 - Se creó el entorno virtual, dentro de la carpeta del proyecto **python -m venv fastapi-env**
 - Se activó el entorno virtual **fastapi-env\Scripts\activate.bat**
@@ -148,27 +150,27 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render qu
 - Se creó el archivo **main.py**
 - Se levantó el servidor **uvicorn main:app --reload**
 
-**Recomendaciones**: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la funcion. y Si la salidad dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
+_Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. y Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
 
 #### Render
 
 Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para crear y ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
 
 - Se debe crear una cuenta en la página [render.com](https://render.com/)
-- Crar el archivo requirements.txt con las librerias a utilizar.
+- Crar el archivo requirements.txt con las librerias a utilizar, se puede usar **python -m pip freeze**
 - Ir a la página, y crear un web service
 - Escoger en donde están los archivos del deploy, nuestro caso GitHub
 - Pasar el link del reposiorio público con los archivos del deploy
-- Dar nombre al deploy, colocar en Runtime:python3, Start Command:uvicorn main:app --host 0.0.0.0 --port 10000
+- Dar nombre al deploy, colocar en Runtime:**python3**, Start Command:**uvicorn main:app --host 0.0.0.0 --port 10000**
 - Se escogió la versión gratis en nuestro caso.
-- Se generó un servicio nuevo  en `[render.com](https://render.com/), conectado al presente repositorio.
+- Se generó un servicio nuevo  en [render.com](https://render.com/), conectado al presente repositorio.
 - Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
 
-_Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida,las siguientes veces no nuestra el mismo error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
+_Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida, las siguientes veces no nuestra el error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
 
 ## Video
 
-En este [video](https://www.google.com) se explica brevemente este proyecto mostrando el funcionamiento de la API.
+En este [video](https://es.dreamstime.com/foto-de-una-alegre-y-grosera-novia-rid%C3%ADcula-que-te-se%C3%B1ala-mostrando-signos-p%C3%A9rdida-gritando-risas-aisladas-por-amarillo-apunta-image161058741) se explica brevemente este proyecto mostrando el funcionamiento de la API.
 
 ## Requerimientos
 - [Python](https://docs.python.org/es/3/library/index.html)
