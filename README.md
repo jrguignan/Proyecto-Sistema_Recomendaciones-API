@@ -79,10 +79,10 @@ Para descargar el dataset original, se puede descargar del siguiente link. [Data
 
 ### [EDA](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/EDA.ipynb)
 
-Se aplicó la regla de los 3 sigmas sobre las columna **Playtime_forever** y **Price**. Tambien se revisaron las distintas columnas que se utilizaron en las funciones. No se realizó mayor cambio sobre los dataframes, ya que no se consideró necesario. Los análisis se realizaron en algunos casos sobre el dataframe df y otros sobre el df1, para mayor comodidad.
+Se aplicó la regla de los **3 sigmas** sobre las columna **Playtime_forever** y **price**. Tambien se revisaron las distintas columnas que se utilizaron en las funciones. No se realizó mayor cambio sobre los dataframes, ya que no se consideró necesario. Los análisis se realizaron en algunos casos sobre el dataframe **df** y otros sobre el **df1**, para mayor comodidad.
 
 ### [Funciones](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/funciones.ipynb)
-Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
+Para el desarrollo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
 
 + def **developer( *desarrollador : str* )**:
     Debe devolver la cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
