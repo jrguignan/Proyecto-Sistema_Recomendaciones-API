@@ -8,9 +8,8 @@
 
 ![henry](https://github.com/GRP-777/Proyecto_Individual_1/assets/132501854/1333fbec-6c93-4f2d-a1ff-6b1ad899051c)
 
-# Proyecto Individual  1 
+# Proyecto Individual Sistema de Recomendación Steam - API
 ## Data Science & Machine Learning Operations (MLOps) 
-
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
@@ -20,7 +19,7 @@
 
 Este proyecto simula el rol de un MLOps Engineer, es decir, la combinación de un Data Engineer y Data Scientist, para la plataforma de videojuegos Steam. Para su desarrollo, se entregan unos datos y se solicita un Producto Mínimo Viable que muestre una API deployada en un servicio en la nube y la aplicación de dos modelos de Machine Learning, por una lado, un análisis de sentimientos sobre los comentarios de los usuarios de los juegos y, por otro lado, la recomendación de juegos a partir de dar el nombre de un juego o a partir de los gustos de un usuario en particular.
 
-##Contexto
+## Contexto
 Se plantea desde los propietarios de la plataforma Steam la necesidad de contar con los datos en una API para poder ser consumidos. Por otro lado existe la necesidad de poder realizar las consultas al modelo de recomendación para lo cual resulta necesario hacer un deploy de la API.
 
 ## Datos
@@ -62,7 +61,7 @@ Para descargar el dataset original, se puede descargar del siguiente link. [Data
 | items              | User items in Json format                                          | {'item_id': '273350', 'item_name': 'Evolve Stage 2', 'playtime_forever': 58, 'playtime_2weeks': 0}                                                                                |
 
 
-## Tareas desarrolladas
+## Tareas Desarrolladas
 
 ### ETL
 
@@ -73,7 +72,7 @@ Para descargar el dataset original, se puede descargar del siguiente link. [Data
 * Se eliminaron nulos y columnas innecesarias para el análisis.
 * Se corrigió formato de fechas.
 * Se corrigió formato Mayúsculas y Minúsculas
-* En el archivo Reviews.json, se utilizó la biblioteca NLTK (***Natural Language Toolkit***) y la función **SentimentIntensityAnalyzer** para aplicar análisis de sentimiento y clasificar la columna 'Reviews', que contiene reseñas realizadas por los usuarios de los juegos, en positivas, neutrales y negativas.
+* En el archivo Reviews.json, se utilizó la biblioteca NLTK (***Natural Language Toolkit***) y la función **developer_reviews_analysis** para aplicar análisis de sentimiento y clasificar la columna 'Reviews', que contiene reseñas realizadas por los usuarios de los juegos, en positivas y negativas.
 
 ### EDA
 
@@ -86,58 +85,66 @@ Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando l
     Debe devolver la cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
   
 Ejemplo de retorno: {"Año: 2023 ,Cantidad de Items: 50 , Contenido Free: 27%}
-                    {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}
+                    {"Año: 2022 ,Cantidad de Items: 45 , Contenido Free: 25%}<br/>
 
 
 + def **userdata( *User_id : str* )**:
     Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento
 
-Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}<br/>
 
 + def **UserForGenre( *genero : str* )**:
     Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año de lanzamiento.
   
-Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}<br/>
 
 + def **best_developer_year( *año : int* )**:
    Debe devolver el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos)
   
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]<br/>
 
 + def **developer_reviews_analysis( *desarrolladora : str* )**:
     Según el desarrollador, se devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.
 
-Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}
+Ejemplo de retorno: {'Valve' : [Negative = 182, Positive = 278]}<br/>
 
 + def **recomendacion_juego( *id de producto* )**: 
     Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
-    Ejemplo de retorno: {'Juegos recomendados a partir del juego juego_id': '6787990',
-                         'No 1': 'Snooker-online multiplayer snooker game!',
-                         'No 2': "Malzbie's Pinball Collection",
-                         'No 3': 'Zaccaria Pinball - Blackbelt Table',
-                         'No 4': 'Zaccaria Pinball - Bronze Membership',
-                         'No 5': 'Zaccaria Pinball - Cine Star Table'}
+Ejemplo de retorno: {'Juegos recomendados a partir del juego juego_id': '6787990',
+                     'No 1': 'Snooker-online multiplayer snooker game!',
+                     'No 2': "Malzbie's Pinball Collection",
+                     'No 3': 'Zaccaria Pinball - Blackbelt Table',
+                     'No 4': 'Zaccaria Pinball - Bronze Membership',
+                     'No 5': 'Zaccaria Pinball - Cine Star Table'}
 
 <br/>
 
 ### Machine Learning
 
-El modelo establece una relación item-item. Esto significa que dado un item_id, en función de qué tan similar sea al resto, se recomendarán artículos similares. Aquí, la entrada es un juego y la salida es una lista de juegos recomendados.
+El modelo establece una relación item-item. Esto significa que dado un item_id, en función de qué tan similar sea al resto, se recomendarán artículos similares. La entrada es un juego y la salida es una lista de juegos recomendados.
 
-Se utilizó una técnica de procesamiento de lenguaje natural (NLP) llamada TF-IDF (Term Frequency-Inverse Document Frequency) y el cálculo de similitud del coseno para analizar la similitud entre textos, en este caso, para analizar la similitud entre los géneros de los juegos del datafame df1_redu. Se tuvo que reducir la cantidad de filas del dataframe original df1
+Se utilizó una técnica de procesamiento de lenguaje natural (NLP) llamada TF-IDF (Term Frequency-Inverse Document Frequency) y el cálculo de similitud del coseno para analizar la similitud entre textos, en este caso, para analizar la similitud entre los géneros de los juegos del datafame df1_redu. Se tuvo que reducir la cantidad de filas del dataframe original df1, ya que en **render** ofrece poca capacidad de cómputo de manera gratuita.
 
+Del siguiente link se puede descargar la matriz [cosine_sim](https://drive.google.com/file/d/18UzYTkwHRVFnN0S3mYILUKBE-BTQmS2j/view?usp=sharing) (cosine similarity) en formato parquet, la matriz esta entrenada con todos los datos.
 
 
 ### Deploy
+
+## FastAPI
+
+## Render
 
 Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para crear y ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
 
 - Se generó un API de manera local con FastAPI.
 - Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio.
-- Finalmente, el servicio queda corriendo en [API_Steam](https://proyecto-api-steam.onrender.com/)
+- Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
 
+### Video
 
-#### Requerimientos
+En este [video](https://www.google.com) se explica brevemente este proyecto mostrando el funcionamiento de la API.
+
+### Requerimientos
 - [Python](https://docs.python.org/es/3/library/index.html)
 - [Scikit-Learn](https://scikit-learn.org/stable/)
 - [Pandas](https://pandas.pydata.org/)
@@ -146,7 +153,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Render](https://render.com/)
 
-#### Autor
+### Autor
 - José R. Guignan
 - Mail: joserguignan@gmail.com
 - Linkedin: [Linkedin](https://www.linkedin.com/in/jrguignan)
