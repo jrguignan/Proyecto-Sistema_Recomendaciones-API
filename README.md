@@ -6,7 +6,7 @@
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
 
 
-![henry](https://github-production-user-asset-6210df.s3.amazonaws.com/132501854/272298675-1333fbec-6c93-4f2d-a1ff-6b1ad899051c.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240109T130252Z&X-Amz-Expires=300&X-Amz-Signature=269aadd1e7b5570b6f1db9fcd87244edcc5090e0b246452d31f5b23e4f2582f2&X-Amz-SignedHeaders=host&actor_id=105399895&key_id=0&repo_id=699052460)
+![henry](https://camo.githubusercontent.com/3cb94d41ac073b2d10b8c7423e5a54e2928610821a2837883e4a9a56052f37ab/68747470733a2f2f643331757a386c77666d796e38672e636c6f756466726f6e742e6e65742f4173736574732f6c6f676f2d68656e72792d77686974652d6c672e706e67)
 # Proyecto Individual  1 
 ## Data Science & Machine Learning Operations (MLOps) 
 
@@ -33,7 +33,7 @@ Para este proyecto se proporcionaron tres archivos JSON:
 * **output_steam_games.json** es un dataset que contiene datos relacionados con los juegos en sí, como los título, el desarrollador, los precios, características técnicas, etiquetas, entre otros datos.
 
 ## Descripcion del dataset
-Para descargar el dataset original, se puede descargar del siguiente link. [Original Datasets](https://drive.google.com/drive/folders/1HqBG2-sUkz_R3h1dZU5F2uAzpRn7BSpj)
+Para descargar el dataset original, se puede descargar del siguiente link. [Datasets](https://drive.google.com/drive/folders/1XrgahQxKIrEwvViS9NzGbTVBnPkQ-2EW?usp=sharing)
 
 
 | **Column**         | **Description**                                                   | **Example**                                                                                                                                                                           |
@@ -124,7 +124,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 
 - Se generó un API de manera local con FastAPI.
 - Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio.
-- Finalmente, el servicio queda corriendo en [https://render).
+- Finalmente, el servicio queda corriendo en [proyecto-api_steam](https://proyecto-api-steam.onrender.com/)
 
 
 #### Requerimientos
@@ -139,5 +139,5 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 #### Autor
 - José R. Guignan
 - Mail: joserguignan@gmail.com
-- Linkedin:[www.linkedin.com/in/jrguignan](www.linkedin.com/in/jrguignan)
+- Linkedin:[linkedin](www.linkedin.com/in/jrguignan)
 

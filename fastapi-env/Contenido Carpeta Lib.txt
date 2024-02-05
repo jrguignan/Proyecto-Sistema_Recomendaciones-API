@@ -1,0 +1,12 @@
+En este nivel deberia haber:
+
+Include ->carpeta
+Scripts ->carpeta
+Lib     ->carpeta
+pyvenv  ->archivo
+
+Pero la carpeta Lib no se cargo por su peso, para ahorrar espacio.
+Esta carpeta es de importancia para el deploy en FastAPI.
+
+En este link se puede descargar:
+https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing
