@@ -110,17 +110,17 @@ def developer_reviews_analysis(desarrollador : str = Query(...,
 ######################################
 #Recomendaciones
 #Funcion 1
-# @app.get(path = '/recomendacion_juego',
-#           description = """ <font color="blue">
-#                         1. Haga clik en "Try it out".<br>
-#                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
-#                         3. Scrollear hasta "Responses" -> "Response body" <br>
-#                         4. Muestra: Recomienda 5 juegos a partir del id de un juego dado.
-#                         </font>
-#                         """,
-#          tags=["Sistema Recomendación Item-Item"])
-# def recomendacion_juego(juego_id : int = Query(..., 
-#                             description="ID del Videojuego", 
-#                             example='670290')):
-#     return fa.recomendacion_juego(juego_id)
+@app.get(path = '/recomendacion_juego',
+          description = """ <font color="blue">
+                        1. Haga clik en "Try it out".<br>
+                        2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
+                        3. Scrollear hasta "Responses" -> "Response body" <br>
+                        4. Muestra: Recomienda 5 juegos a partir del id de un juego dado.
+                        </font>
+                        """,
+         tags=["Sistema Recomendación Item-Item"])
+def recomendacion_juego(juego_id : int = Query(..., 
+                            description="ID del Videojuego", 
+                            example='670290')):
+    return fa.recomendacion_juego(juego_id)
 
