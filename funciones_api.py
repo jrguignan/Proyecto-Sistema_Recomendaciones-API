@@ -274,10 +274,9 @@ def recomendacion_juego (juego_id : int):
     for i,l in enumerate(lista):
         if not(l in lista_juegos) and (l != juego_id):
            lista_juegos.append(lista[i])
-    #del lista_juegos[2]
     
     return {
-          'Juegos recomendados a partir del juego juego_id' : str(juego_id), 
+          'Juegos recomendados a partir del juego' : str(juego_id), 
           'No 1': str(df1_redu[df1_redu['id']==lista_juegos[0]].iloc[0][1]),
           'No 2': str(df1_redu[df1_redu['id']==lista_juegos[1]].iloc[0][1]),
           'No 3': str(df1_redu[df1_redu['id']==lista_juegos[2]].iloc[0][1]),
