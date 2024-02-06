@@ -6,7 +6,7 @@
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
 
 
-![henry](https://github.com/GRP-777/Proyecto_Individual_1/assets/132501854/1333fbec-6c93-4f2d-a1ff-6b1ad899051c)
+![henry](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/Logo%20HENRY.png)
 
 # Proyecto Sistema de Recomendación Steam - API
 ## Data Science & Machine Learning Operations (MLOps) 
