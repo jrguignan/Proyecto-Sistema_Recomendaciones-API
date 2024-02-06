@@ -30,7 +30,7 @@ def Presentacion():
 
 @app.get(path = '/developer',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: Cantidad de items y porcentaje de contenido Free por año según empresa desarrolladora.
@@ -47,7 +47,7 @@ def developer(desarrollador : str = Query(...,
 
 @app.get(path = '/userdata',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: Cantidad de dinero gastado por el usuario, el porcentaje de recomendación en base a reviews.recommend y cantidad de items.
@@ -63,7 +63,7 @@ def userdata(User_id : str = Query(...,
 #Funcion 3
 @app.get(path = '/UserForGenre',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: El usuario que acumula más horas jugadas para el género dado y la suma de horas jugadas por año de lanzamiento.
@@ -79,7 +79,7 @@ def UserForGenre(genero : str = Query(...,
 #Funcion 4
 @app.get(path = '/best_developer_year',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: El  top 3 de desarrolladores con juegos más recomendados por usuarios para el año dado.
@@ -95,7 +95,7 @@ def best_developer_year(year : int = Query(...,
 #Funcion 5
 @app.get(path = '/developer_reviews_analysis',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: El analisis de sentimiento categorizado de la desarrolladora de videojuegos dada.
@@ -112,7 +112,7 @@ def developer_reviews_analysis(desarrollador : str = Query(...,
 #Funcion 1
 @app.get(path = '/recomendacion_juego',
           description = """ <font color="blue">
-                        1. Haga clik en "Try it out".<br>
+                        1. Haga click en "Try it out".<br>
                         2. Ingrese el nombre del genero en el box abajo y de click en "Execute".<br>
                         3. Scrollear hasta "Responses" -> "Response body" <br>
                         4. Muestra: Recomienda 5 juegos a partir del id de un juego dado.

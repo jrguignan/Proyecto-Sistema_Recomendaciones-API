@@ -36,7 +36,7 @@ Para este proyecto se proporcionaron tres archivos JSON:
 Para descargar el dataset original, se puede descargar del siguiente link. [Datasets](https://drive.google.com/drive/folders/1XrgahQxKIrEwvViS9NzGbTVBnPkQ-2EW?usp=sharing)
 
 
-| **Column**         | **Description**                                                   | **Example**                                                                                                                                                                           |
+| **Columnas**         | **Descripcion**                                                   | **Ejemplo**                                                                                                                                                                           |
 |------------------- |------------------------------------------------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | publisher          | Content publisher                                                  | [Ubisoft, Dovetail Games - Trains, Degica]                                                                                                                                           |
 | genres             | Content genre                                                      | [Action, Adventure, Racing, Simulation, Strategy]                                                                                                                                    |
@@ -152,9 +152,9 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render. P
 
 ![Fastapi](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/fastapi.png)
 
-_Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. y Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
+_Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
 
-_Nota_: Se omitió copiar la carpeta [Lib](https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing) detro del directorio [/fastapi-env](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/fastapi-env), que contiene las librerías descargadas para el entorno virtual. Esto se hizo para ahorrar espacio en el Github. Se debe tener para poder correr **FastAPI**. 
+_Nota_: Se omitió copiar la carpeta [Lib](https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing) detro del directorio [/fastapi-env](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/fastapi-env), que contiene las librerías descargadas para el entorno virtual. Esto se hizo para ahorrar espacio en el Github. 
 
 #### Render
 
@@ -176,7 +176,9 @@ _Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un rep
 
 ## Video
 
-En este [video](https://es.dreamstime.com/foto-de-una-alegre-y-grosera-novia-rid%C3%ADcula-que-te-se%C3%B1ala-mostrando-signos-p%C3%A9rdida-gritando-risas-aisladas-por-amarillo-apunta-image161058741) se explica brevemente este proyecto mostrando el funcionamiento de la API.
+En este [video](https://drive.google.com/drive/folders/1IJHL48pwmgE-M0aLox7iKMWzsn3_whpG?usp=sharing) se explica brevemente este proyecto mostrando el funcionamiento de la API. <br>
+
+[comment]: <> (Link caido, nuevo [link de video](https://www.digitaltrends.com/wp-content/uploads/2022/07/lord-of-the-rings-gollum-trailer-portrait-2.jpg?fit=720%2C404&p=1))
 
 ## Requerimientos
 - [Python](https://docs.python.org/es/3/library/index.html)
@@ -190,5 +192,5 @@ En este [video](https://es.dreamstime.com/foto-de-una-alegre-y-grosera-novia-rid
 ## Autor
 - José R. Guignan
 - Mail: joserguignan@gmail.com
-- Linkedin: [Linkedin](https://www.linkedin.com/in/jrguignan)
+- Linkedin: [https://www.linkedin.com/in/jrguignan](https://www.linkedin.com/in/jrguignan)
 
