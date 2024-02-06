@@ -17,7 +17,7 @@
 
 ## Introducción
 
-Este proyecto simula el rol de un MLOps Engineer, es decir, la combinación de un Data Engineer y Data Scientist, para la plataforma de videojuegos Steam. Para su desarrollo, se entregan unos datos y se solicita un Producto Mínimo Viable que muestre una API deployada en un servicio en la nube y la aplicación de dos modelos de Machine Learning, por una lado, un análisis de sentimientos sobre los comentarios de los usuarios de los juegos y, por otro lado, la recomendación de juegos a partir de dar el nombre de un juego o a partir de los gustos de un usuario en particular.
+Este proyecto simula el rol de un MLOps Engineer, es decir, la combinación de un Data Engineer y Data Scientist, para la plataforma de videojuegos Steam. Para su desarrollo, se entregan unos datos y se solicita un Producto Mínimo Viable que muestre una API deployada en un servicio en la nube y la aplicación de un modelo de Machine Learning, por una lado, un análisis de sentimientos sobre los comentarios de los usuarios de los juegos y, por otro lado, la recomendación de juegos a partir de dar el id de un juego en particular.
 
 ## Contexto
 Se plantea desde los propietarios de la plataforma Steam la necesidad de contar con los datos en una API para poder ser consumidos. Por otro lado existe la necesidad de poder realizar las consultas al modelo de recomendación para lo cual resulta necesario hacer un deploy de la API.
@@ -69,7 +69,7 @@ Para descargar el dataset original, se puede descargar del siguiente link. [Data
 * Se abrieron y leyeron los archivos de formato JSON **anidados**.
 * Se guardaron en dataframes, **df_games**, **df_items** y **df_reviews**.
 * Se hizo una limpieza general de los datos.
-* Se creo un datafreme con todos los datos **df**.
+* Se creó un datafreme con todos las columnas a utilizar **df**.
 * Se transformó la columna **price** a float y los valores de juegos gratis, pasaron a ser 0
 * Se creó la columna **release_year** y **posted_year** a partir de **release_date** y **posted_year**.
 * Se creó un segundo datadrame **df1**, para facilitar el código de las funciones.
@@ -150,21 +150,27 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render. P
 - Se creó el archivo **main.py**
 - Se levantó el servidor **uvicorn main:app --reload**
 
+
+
 _Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. y Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
+
+_Nota_: Se omitió copiar la carpeta [Lib](https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing) detro del directorio [/fastapi-env](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/fastapi-env), que contiene las librerías descargadas para el entorno virtual. Esto se hizo para ahorrar espacio en el Github. Se debe tener para poder correr **FastAPI**. 
 
 #### Render
 
-Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para crear y ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
+Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
 
 - Se debe crear una cuenta en la página [render.com](https://render.com/)
-- Crar el archivo requirements.txt con las librerias a utilizar, se puede usar **python -m pip freeze**
+- Crear el archivo requirements.txt con las librerias a utilizar, se puede usar **python -m pip freeze**
 - Ir a la página, y crear un web service
 - Escoger en donde están los archivos del deploy, nuestro caso GitHub
 - Pasar el link del reposiorio público con los archivos del deploy
-- Dar nombre al deploy, colocar en Runtime:**python3**, Start Command:**uvicorn main:app --host 0.0.0.0 --port 10000**
+- Dar nombre al deploy, llenar Runtime:**python3**, Start Command:**uvicorn main:app --host 0.0.0.0 --port 10000**
 - Se escogió la versión gratis en nuestro caso.
 - Se generó un servicio nuevo  en [render.com](https://render.com/), conectado al presente repositorio.
 - Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
+
+
 
 _Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida, las siguientes veces no nuestra el error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
 
