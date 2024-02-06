@@ -178,7 +178,6 @@ _Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un rep
 
 En este [video](https://drive.google.com/drive/folders/1IJHL48pwmgE-M0aLox7iKMWzsn3_whpG?usp=sharing) se explica brevemente este proyecto mostrando el funcionamiento de la API. <br>
 
-[comment]: <> (Link caido, nuevo [link de video](https://www.digitaltrends.com/wp-content/uploads/2022/07/lord-of-the-rings-gollum-trailer-portrait-2.jpg?fit=720%2C404&p=1))
 
 ## Requerimientos
 - [Python](https://docs.python.org/es/3/library/index.html)
