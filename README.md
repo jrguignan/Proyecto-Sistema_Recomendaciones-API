@@ -135,12 +135,14 @@ El modelo establece una relación item-item. Esto significa que dado un item_id,
 
 Se utilizó una técnica de procesamiento de lenguaje natural (NLP) llamada TF-IDF (Term Frequency-Inverse Document Frequency) y el cálculo de similitud del coseno para analizar la similitud entre textos, en este caso, para analizar la similitud entre los géneros de los juegos del datafame df1_redu. Se tuvo que reducir la cantidad de filas del dataframe original df1, ya que en **render** ofrece poca capacidad de cómputo de manera gratuita.
 
+_Recomendaciones_: Se puede mejorar el modelo de recomendación al usar más columnas para el entrenamiento, al aplicar **tfidf.fit_transform** se pueden agregar columnas como: tags, developers, title y no sólo genres. Pero esto generaría mayor requerimiento de cómputo. 
+
 Del siguiente link se puede descargar la matriz [cosine_sim](https://drive.google.com/file/d/18UzYTkwHRVFnN0S3mYILUKBE-BTQmS2j/view?usp=sharing) (cosine similarity) en formato parquet, la matriz esta entrenada con todos los datos.
 
 
-### Deploy de la API
+### [Deploy de la API](https://proyecto-api-steam.onrender.com)
 
-#### FastAPI
+#### [FastAPI](https://fastapi.tiangolo.com/)
 
 Para el deploy de la API de manera local, se seleccionó la plataforma Render. Para esto se siguieron estos pasos:
 
@@ -154,9 +156,9 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render. P
 
 _Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
 
-_Nota_: Se omitió copiar la carpeta [Lib](https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing) detro del directorio [/fastapi-env](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/fastapi-env), que contiene las librerías descargadas para el entorno virtual. Esto se hizo para ahorrar espacio en el Github. 
+_Nota_: Se omitió copiar la carpeta [Lib](https://drive.google.com/file/d/12WO9M0hQy5EvTKQTntB_Gi7SKPzzqu3Z/view?usp=sharing) detro del directorio [/fastapi-env](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/tree/main/fastapi-env), contiene las librerías descargadas para el entorno virtual. Esto se hizo para ahorrar espacio en el Github. 
 
-#### Render
+#### [Render](https://render.com/)
 
 Para el deploy de la API se seleccionó la plataforma Render que es una nube unificada para ejecutar aplicaciones y sitios web, permitiendo el despliegue automático desde GitHub. Para esto se siguieron estos pasos:
 
@@ -164,11 +166,11 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 - Crear el archivo requirements.txt con las librerias a utilizar, se puede usar **python -m pip freeze**
 - Ir a la página, y crear un web service
 - Escoger en donde están los archivos del deploy, nuestro caso GitHub
-- Pasar el link del reposiorio público con los archivos del deploy
+- Pasar el link del repositorio público con los archivos del deploy
 - Dar nombre al deploy, llenar Runtime:**python3**, Start Command:**uvicorn main:app --host 0.0.0.0 --port 10000**
 - Se escogió la versión gratis en nuestro caso.
 - Se generó un servicio nuevo  en [render.com](https://render.com/), conectado al presente repositorio.
-- Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
+- Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com)
 
 ![Render](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/render1.png)
 
