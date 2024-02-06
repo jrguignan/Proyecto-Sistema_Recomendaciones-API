@@ -12,7 +12,7 @@
 ## Data Science & Machine Learning Operations (MLOps) 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
+<img src="https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/MILOPS.png"  height=300>
 </p>
 
 ## Introducción
@@ -150,7 +150,7 @@ Para el deploy de la API de manera local, se seleccionó la plataforma Render. P
 - Se creó el archivo **main.py**
 - Se levantó el servidor **uvicorn main:app --reload**
 
-
+![Fastapi](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/fastapi.png)
 
 _Recomendaciones_: Si la salida produce un **null** o no se muestra parte del contenido, posiblemente sea la manera de mostrar el return de la función. y Si la salida dice **Internal Error** probablemente la función no este corriendo, por falta de una librería o fallo en la misma.
 
@@ -170,7 +170,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 - Se generó un servicio nuevo  en [render.com](https://render.com/), conectado al presente repositorio.
 - Finalmente, el servicio queda corriendo en [Sistema de Recomendación Steam - API](https://proyecto-api-steam.onrender.com/)
 
-
+![Render](https://github.com/jrguignan/Proyecto-Sistema_Recomendaciones-API/blob/main/images/render1.png)
 
 _Recomendaciones_: Se debe estar pendiente de la primera vez que se corre un repositorio en render, porque si da un error casi siempre sólo se muesta en la primera corrida, las siguientes veces no nuestra el error. Se debe tener en cuenta que la capacidad gratis es bastante limitada.
 
